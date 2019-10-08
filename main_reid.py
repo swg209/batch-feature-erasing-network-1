@@ -176,9 +176,9 @@ def train(**kwargs):
 
             if use_gpu:
                 state_dict = model.module.state_dict()
-                state_dict = model.state_dict()
             else:
-                save_checkpoint({'state_dict': state_dict, 'epoch': epoch + 1},
+                state_dict = model.state_dict()
+            save_checkpoint({'state_dict': state_dict, 'epoch': epoch + 1},
                 is_best=is_best, save_dir=opt.save_dir, 
                 filename='checkpoint_ep' + str(epoch + 1) + '.pth.tar')
 
