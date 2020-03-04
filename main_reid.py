@@ -175,7 +175,7 @@ def train(**kwargs):
                 best_epoch = epoch + 1
 
             if use_gpu:
-                state_dict = model.module.state_dict()
+                state_dict = model.module.state_dict()  #因为model是被nn.DataParallel包装的所以有module属性
             else:
                 state_dict = model.state_dict()
             save_checkpoint({'state_dict': state_dict, 'epoch': epoch + 1},
